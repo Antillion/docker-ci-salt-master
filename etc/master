@@ -1,0 +1,33 @@
+user: root
+interface: 0.0.0.0
+log_file: /var/log/salt/salt-master.log
+file_roots:
+  base:
+    - /srv/salt/state
+pillar_roots:
+  base:
+    - /srv/salt/pillar
+auto_accept: False
+halite:
+  tls: False
+  level: debug
+  server: cherrypy
+  host: 0.0.0.0
+  cors: True
+  port: 8080
+
+rest_cherrypy:
+  port: 8002
+  disable_ssl: true
+  host: 0.0.0.0
+  debug: true
+
+rest_wsgi:
+  port: 8001
+  host: 0.0.0.0
+
+
+external_auth:
+  pam:
+    remotesalt:
+      - .*
